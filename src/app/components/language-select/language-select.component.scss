@@ -1,0 +1,64 @@
+div#LanguageSelect {
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: var(--primary-color);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  div.content {
+    max-width: 960px;
+    width: 100%;
+
+    p {
+      text-align: center;
+      color: white;
+      font-size: 32px;
+    }
+
+    div.options {
+      display: flex;
+      justify-content: center;
+
+      div.option {
+        color: #311B92;
+        background: white;
+        padding: 15px;
+        border-radius: 5px;
+        font-size: 28px;
+        margin-right: 15px;
+        cursor: pointer;
+        text-align: center;
+
+        &:hover {
+          background: #D1C4E9;
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  div#LanguageSelect {
+    div.content {
+      p {
+        font-size: 20px;
+        line-height: 30px
+      }
+      div.options {
+        display: block;
+        width: 90%;
+        padding: 5%;
+
+        div.option {
+          font-size: 20px;
+          margin-right: 0;
+          margin-bottom: 15px;
+        }
+      }
+    }
+  }
+}

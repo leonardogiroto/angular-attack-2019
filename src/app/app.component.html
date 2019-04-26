@@ -1,0 +1,98 @@
+<app-language-select
+  *ngIf="languageSet === false" 
+  (selectedLanguage)="selectedLanguage()"
+></app-language-select>
+
+<div id="App" *ngIf="languageSet === true" >
+  <div id="hackbit-vote-widget" ></div>
+  <button class="language" mat-raised-button (click)="languageSet = false" >
+    {{ 'language' | translate }}
+  </button>
+
+  <app-greetings
+    [language]="currentLanguage"
+  ></app-greetings>
+  
+  <app-address-search
+    [userLocation]="userLocation"
+    (clearAddress)="userLocation = null"
+    (setUserAddress)="setUserAddress($event)"
+  ></app-address-search>
+
+  <div id="Filters" >
+    <app-step
+      [step]="2"
+      [stepText]="'stepTwo' | translate"
+    ></app-step><br><br>
+    <mat-form-field appearance="outline">
+      <mat-label>{{ 'howFilter' | translate }}</mat-label>
+      <mat-select [(ngModel)]="filters.how" (ngModelChange)="loadCategories(filters)" >
+        <mat-option value="Home" >{{ 'atHomeLabel' | translate }}</mat-option>
+        <mat-option value="Outside" >{{ 'outsideLabel' | translate }}</mat-option>
+        <mat-option value="'whatever' | translate" >{{ 'whatever' | translate }}</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>{{ 'whenFilter' | translate }}</mat-label>
+      <mat-select [(ngModel)]="filters.when" (ngModelChange)="loadCategories(filters)" >
+        <mat-option value="Morning" >{{ 'morningLabel' | translate }}</mat-option>
+        <mat-option value="Afternoon" >{{ 'afternoonLabel' | translate }}</mat-option>
+        <mat-option value="Night" >{{ 'nightLabel' | translate }}</mat-option>
+        <mat-option value="'whatever' | translate" >{{ 'whatever' | translate }}</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>{{ 'withFilter' | translate }}</mat-label>
+      <mat-select [(ngModel)]="filters.with" (ngModelChange)="loadCategories(filters)" >
+        <mat-option value="Alone" >{{ 'aloneLabel' | translate }}</mat-option>
+        <mat-option value="Friends" >{{ 'friendsLabel' | translate }}</mat-option>
+        <mat-option value="Family" >{{ 'familyLabel' | translate }}</mat-option>
+        <mat-option value="'whatever' | translate" >{{ 'whatever' | translate }}</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+  
+  <div id="Generate" >
+    <app-step
+      [step]="3"
+      [stepText]="'stepThree' | translate"
+    ></app-step><br><br>
+    <ng-container *ngIf="chosenCategory" >
+      <p>{{ 'defaultTextBeforeResult' | translate }}</p>
+      <h1>
+        {{ chosenCategory.id | translate }}
+      </h1>
+    </ng-container>
+    <button mat-raised-button
+      [color]="chosenCategory ? 'accent' : 'primary'"
+      [disabled]="loadingResults"
+      (click)="loadResults()" >
+      {{ chosenCategory ? ('tryAgainButton' | translate) : ('generateButton' | translate) }}
+    </button>
+  </div>
+  <br><br>
+
+  <ng-container *ngIf="results && results.length > 0" >
+    <app-step
+      [step]="4"
+      [stepText]="'stepFour' | translate"
+    ></app-step>
+    <app-results
+      [results]="results"
+      (viewResultDetails)="viewResultDetails($event)"
+    ></app-results>
+  </ng-container>
+</div>
+
+<ng-container *ngIf="results && results.length > 0" >
+  <div id="ResultsMap" #map
+    style="width: 100%; background: grey"
+    [hidden]="!languageSet"
+  ></div>
+</ng-container>
+
+<app-footer
+  [hidden]="!languageSet"
+></app-footer>

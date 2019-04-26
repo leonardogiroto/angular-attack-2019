@@ -1,0 +1,44 @@
+@import "~@angular/material/prebuilt-themes/deeppurple-amber.css";
+@import url('https://fonts.googleapis.com/css?family=Montserrat:400,700');
+
+:root {
+  --primary-color: #673ab7;
+}
+
+div#hackbit-vote-widget {
+  div.hb-vote-widget {
+    background: var(--primary-color);
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+body {
+  margin: 0;
+  font-family: 'Montserrat';
+  background: rgba(237, 231, 246, 0.25);
+  color: #333;
+  position: relative;
+  min-height: calc(100vh - 50px);
+  padding-bottom: 50px;
+}
+
+@media only screen and (max-width: 768px) {
+  div#hackbit-vote-widget {
+    div.hb-vote-widget {
+      justify-content: initial;
+    }
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  div#cdk-overlay-0 {
+    height: calc(70vh + 110px);
+  
+    .mat-dialog-container {
+      padding: 20px;
+    }
+  }
+}

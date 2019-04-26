@@ -1,0 +1,50 @@
+div[mat-dialog-content] {
+  overflow: hidden;
+  max-height: 100vh;
+  position: relative;
+
+  iframe {
+    width: 100%;
+    height: 60vh;
+    overflow: hidden;
+  }
+  div.iframe-placeholder {
+    position: absolute;
+    background: rgba(237, 231, 246, 0.25);
+    top: 0;
+    width: calc(100% - 40px);
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    font-size: 24px;
+
+    mat-spinner {
+      margin-bottom: 15px;
+    }
+  }
+}
+
+div[mat-dialog-actions] {
+  justify-content: center;
+
+  button {
+    min-width: 150px;
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  div[mat-dialog-content] {
+    iframe {
+      height: 70vh;
+    }
+  }
+
+  div[mat-dialog-actions] {
+    button {
+      min-width: initial;
+      flex: 1;
+    }
+  }
+}
