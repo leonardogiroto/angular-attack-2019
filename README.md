@@ -1,27 +1,37 @@
 # Whatshouldido
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.3.7.
+Entry project for Angular Attack 2019 Hackathon.  
+Hackathon project page: http://www.angularattack.com/entries/32-abacate
 
-## Development server
+The idea is pretty simple: based on a given location, we give you activity suggestions, for those who don't know what to do with their spare time - very useful for indecisive people. Also, you can provide some filters - like wheter you prefer something at home or going out - and the suggestion will be based on those. After receiving a suggestion, we have an integration with HERE Maps, which searches for places nearby the given location that are related to the suggestion. Then, it shows to the user a list of those places, which he can click to view more information. And it is translated to English, Portuguese and Spanish.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+## Published Link
 
-## Code scaffolding
+Application was published in Netlify.  
+Link: https://hardcore-northcutt-0f75dd.netlify.com/
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## Environment
 
-## Build
+Angular 7.2.0  
+Angular Material 7.3.6  
+Typescript 3.2.2  
+HERE Maps API Integration  
+Sentry Integration
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+## Installation
 
-## Running unit tests
+```
+npm install
+```
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+## Runing the Project
 
-## Running end-to-end tests
+```
+ng serve
+```
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+## Production Build
 
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+```
+ng build --prod
+```
